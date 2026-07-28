@@ -78,7 +78,7 @@ lazy val zioSchemaVersion      = "1.8.5"
 lazy val zioJsonVersion        = "0.10.0"
 lazy val chimneyVersion        = "1.11.0"
 lazy val calibanVersion        = "3.1.5"
-lazy val doobieVersion         = "1.0.0-RC12"
+lazy val doobieVersion         = "1.0.0-RC13"
 lazy val upickleVersion        = "4.4.3"
 lazy val cirisVersion          = "3.15.0"
 lazy val zioInteropCatsVersion = "23.1.0.13"
@@ -318,8 +318,8 @@ lazy val doobie = (crossProject(JVMPlatform) in file("modules/neotype-doobie"))
     name := "neotype-doobie",
     sharedSettings,
     libraryDependencies ++= Seq(
-      "org.tpolecat"  %% "doobie-core"     % doobieVersion,
-      "org.tpolecat"  %% "doobie-postgres" % doobieVersion % Test,
+      "org.typelevel" %% "doobie-core"     % doobieVersion,
+      "org.typelevel" %% "doobie-postgres" % doobieVersion % Test,
       "com.h2database" % "h2"              % "2.4.240"     % Test
     )
   )

@@ -1,8 +1,8 @@
 package neotype.interop.doobie
 
 import cats.Show
-import doobie.*
 import neotype.*
+import org.typelevel.doobie.*
 
 import scala.annotation.unused
 import scala.reflect.ClassTag

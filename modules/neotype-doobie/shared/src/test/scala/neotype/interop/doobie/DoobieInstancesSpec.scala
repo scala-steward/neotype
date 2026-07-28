@@ -1,9 +1,5 @@
 package neotype.interop.doobie
 
-import _root_.doobie.*
-import _root_.doobie.implicits.*
-import _root_.doobie.postgres.implicits.*
-import _root_.doobie.util.transactor.Transactor
 import cats.Show
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
@@ -11,6 +7,10 @@ import neotype.{Newtype, Subtype}
 import neotype.common.NonEmptyString
 import neotype.interop.doobie.given
 import neotype.test.definitions.*
+import org.typelevel.doobie.*
+import org.typelevel.doobie.implicits.*
+import org.typelevel.doobie.postgres.implicits.*
+import org.typelevel.doobie.util.transactor.Transactor
 import zio.*
 import zio.test.*
 
