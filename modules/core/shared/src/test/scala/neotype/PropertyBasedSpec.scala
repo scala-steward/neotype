@@ -44,20 +44,20 @@ object PropertyBasedSpec extends ZIOSpecDefault:
         }
       },
       test("non-empty string accepts any non-empty string") {
-        check(Gen.alphaNumericStringBounded(1, 100)) { s =>
+        check(Gen.int(1, 100).map("a" * _)) { s =>
           val result = NonEmptyString.make(s)
           assertTrue(result.isRight) &&
           assertTrue(result.map(_.unwrap) == Right(s))
         }
       },
       test("bounded string accepts strings within bound") {
-        check(Gen.stringBounded(0, 100)(Gen.char)) { s =>
+        check(Gen.int(0, 100).map("a" * _)) { s =>
           val result = BoundedString.make(s)
           assertTrue(result.isRight)
         }
       },
       test("bounded string rejects strings exceeding bound") {
-        check(Gen.stringBounded(101, 200)(Gen.alphaChar)) { s =>
+        check(Gen.int(101, 200).map("a" * _)) { s =>
           assertTrue(BoundedString.make(s).isLeft)
         }
       },

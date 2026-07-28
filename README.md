@@ -129,6 +129,8 @@ Neotype integrates with the following libraries:
 - **ZIO**
   - [zio-test](https://github.com/zio/zio) `DeriveGen`
   - [zio-schema](https://github.com/zio/zio-schema)
+- **PROPERTY TESTING**
+  - [ScalaCheck](https://github.com/typelevel/scalacheck) `Gen`, `Arbitrary`
 - **MISCELLANEOUS**
   - [tapir](https://github.com/softwaremill/tapir)
   - [chimney](https://github.com/scalalandio/chimney)

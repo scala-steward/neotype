@@ -1,7 +1,7 @@
 inThisBuild(
   List(
     organization  := "io.github.kitlangton",
-    scalaVersion  := "3.3.7",
+    scalaVersion  := "3.3.8",
     versionScheme := Some("early-semver"),
     homepage      := Some(url("https://github.com/kitlangton/neotype")),
     licenses      := List("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0")),
@@ -69,21 +69,22 @@ ThisBuild / githubWorkflowPublish := Seq(
 // Project Definitions //
 /////////////////////////
 
-lazy val jsoniterVersion       = "2.38.12"
-lazy val circeVersion          = "0.14.15"
-lazy val tapirVersion          = "1.13.19"
+lazy val jsoniterVersion       = "2.39.1"
+lazy val circeVersion          = "0.14.16"
+lazy val tapirVersion          = "1.13.29"
 lazy val zioVersion            = "2.1.26"
-lazy val zioConfigVersion      = "4.0.7"
+lazy val zioConfigVersion      = "4.0.8"
 lazy val zioSchemaVersion      = "1.8.5"
-lazy val zioJsonVersion        = "0.9.2"
-lazy val chimneyVersion        = "1.10.0"
-lazy val calibanVersion        = "3.1.0"
+lazy val zioJsonVersion        = "0.10.0"
+lazy val chimneyVersion        = "1.11.0"
+lazy val calibanVersion        = "3.1.5"
 lazy val doobieVersion         = "1.0.0-RC12"
 lazy val upickleVersion        = "4.4.3"
-lazy val cirisVersion          = "3.14.1"
+lazy val cirisVersion          = "3.15.0"
 lazy val zioInteropCatsVersion = "23.1.0.13"
 lazy val pureconfigVersion     = "0.17.10"
 lazy val scanamoVersion        = "7.0.0"
+lazy val scalaCheckVersion     = "1.19.0"
 lazy val tethysVersion         = "0.29.8"
 lazy val catsVersion           = "2.13.0"
 
@@ -117,6 +118,7 @@ lazy val root = (project in file("."))
     jsoniter.jvm,
     playJson.jvm,
     pureconfig.jvm,
+    scalaCheck.jvm,
     scanamo.jvm,
     tapir.jvm,
     tethys.jvm,
@@ -136,6 +138,7 @@ lazy val root = (project in file("."))
     internal.js,
     jsoniter.js,
     playJson.js,
+    scalaCheck.js,
     tapir.js,
     upickle.js,
     zioJson.js,
@@ -148,6 +151,7 @@ lazy val root = (project in file("."))
     comptime.native,
     core.native,
     internal.native,
+    scalaCheck.native,
     upickle.native,
     zioJson.native,
     zioSchema.native,
@@ -273,7 +277,7 @@ lazy val zioQuill = (project in file("modules/neotype-zio-quill"))
     sharedSettings,
     libraryDependencies ++= Seq(
       "io.getquill"   %% "quill-jdbc-zio" % "4.8.6",
-      "org.postgresql" % "postgresql"     % "42.7.11" % Test,
+      "org.postgresql" % "postgresql"     % "42.7.13" % Test,
       "com.h2database" % "h2"             % "2.4.240" % Test
     )
   )
@@ -375,6 +379,17 @@ lazy val scanamo = (crossProject(JVMPlatform) in file("modules/neotype-scanamo")
   )
   .dependsOn(core % "compile->compile;test->test")
 
+lazy val scalaCheck = (crossProject(JVMPlatform, JSPlatform, NativePlatform) in file("modules/neotype-scalacheck"))
+  .settings(
+    name := "neotype-scalacheck",
+    sharedSettings,
+    libraryDependencies ++= Seq(
+      "org.scalacheck" %%% "scalacheck" % scalaCheckVersion
+    )
+  )
+  .nativeSettings(skipNativeTests)
+  .dependsOn(core % "compile->compile;test->test")
+
 lazy val cats = (crossProject(JVMPlatform, JSPlatform, NativePlatform) in file("modules/neotype-cats"))
   .settings(
     name := "neotype-cats",
@@ -406,7 +421,8 @@ addCommandAlias(
     "zioSchemaNative/test",
     "chimneyNative/test",
     "upickleNative/test",
-    "catsNative/test"
+    "catsNative/test",
+    "scalaCheckNative/test"
   ).mkString(";")
 )
 

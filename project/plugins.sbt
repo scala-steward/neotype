@@ -1,11 +1,11 @@
-addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.11.2")
-addSbtPlugin("org.scalameta"  % "sbt-scalafmt"   % "2.6.1")
-addSbtPlugin("ch.epfl.scala"  % "sbt-scalafix"   % "0.14.6")
-addSbtPlugin("ch.epfl.scala"  % "sbt-bloop"      % "2.0.19")
+addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.12.0")
+addSbtPlugin("org.scalameta"  % "sbt-scalafmt"   % "2.6.2")
+addSbtPlugin("ch.epfl.scala"  % "sbt-scalafix"   % "0.14.7")
+addSbtPlugin("ch.epfl.scala"  % "sbt-bloop"      % "2.1.1")
 
-addSbtPlugin("org.scala-js"       % "sbt-scalajs"                   % "1.21.0")
+addSbtPlugin("org.scala-js"       % "sbt-scalajs"                   % "1.22.0")
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject"      % "1.3.2")
 addSbtPlugin("org.portable-scala" % "sbt-scala-native-crossproject" % "1.3.2")
 
-addSbtPlugin("com.github.sbt"   % "sbt-github-actions" % "0.30.0")
-addSbtPlugin("org.scala-native" % "sbt-scala-native"   % "0.5.11")
+addSbtPlugin("com.github.sbt"   % "sbt-github-actions" % "0.31.0")
+addSbtPlugin("org.scala-native" % "sbt-scala-native"   % "0.5.12")
